@@ -53,6 +53,7 @@
         android:layout_height="63dp"
         android:background="#04799c"
         android:text="Quersumme Check"
+        android:onClick="buttonCheckSum"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintLeft_toLeftOf="parent"

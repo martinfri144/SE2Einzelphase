@@ -23,36 +23,10 @@ public class MainActivity extends AppCompatActivity {
     TextView showReplyServer;
     TextView showResultQuersumme;
 
-    Button btnTestServer;
-    Button btnCalculateQuersumme;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        showResultQuersumme = findViewById(R.id.textViewQuersumme);
-
-        btnTestServer = findViewById(R.id.btnTestServer);
-        btnCalculateQuersumme = findViewById(R.id.btnSumCheck);
-
-
-        btnCalculateQuersumme.setOnClickListener(view -> {
-            String mtnNumber = mtn.getText().toString();
-            int mtnNum = Integer.parseInt(mtnNumber);
-            int testnum = 0;
-
-            for (int i = 0; i <= mtnNumber.length(); i++) {
-
-                testnum = i;
-
-            }
-
-            String test = String.valueOf(testnum);
-            showResultQuersumme.setText(test);
-        });
-
     }
 
     public void buttonSRVClick(View v) {
@@ -70,5 +44,30 @@ public class MainActivity extends AppCompatActivity {
         }
 
         showReplyServer.setText(c.returnMtn());
+    }
+
+    public void buttonCheckSum(View v) {
+        mtn = findViewById(R.id.editTextNumberMtn);
+        showResultQuersumme = findViewById(R.id.textViewQuersumme);
+        String mtnString = mtn.getText().toString();
+        int mtnNumber = Integer.parseInt(mtnString);
+        int even = 0;
+        int odd = 0;
+        int length = mtn.length();
+
+         for (int i = length; i > 0; i--) {
+
+             if (i % 2 == 0) {
+                    even = even + mtnNumber % 10;
+             } else {
+                 odd = odd + mtnNumber % 10;
+             }
+             mtnNumber = mtnNumber / 10;
+             length--;
+         }
+
+         int result = odd - even;
+         length--;
+         showResultQuersumme.setText(Integer.toString(result));
     }
 }
